@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>敏捷软件开发 - Elwin&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Elwin&#039;s Blog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Elwin&#039;s Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="敏捷软件开发历史、价值观和方法"><meta property="og:type" content="blog"><meta property="og:title" content="敏捷软件开发"><meta property="og:url" content="https://elwinliu.vercel.app/posts/22102.html"><meta property="og:site_name" content="Elwin&#039;s Blog"><meta property="og:description" content="敏捷软件开发历史、价值观和方法"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://elwinliu.vercel.app/img/og_image.png"><meta property="article:published_time" content="2022-05-03T07:30:00.000Z"><meta property="article:modified_time" content="2022-05-03T08:32:18.333Z"><meta property="article:author" content="刘星雨"><meta property="article:tag" content="软件工程"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://elwinliu.vercel.app/posts/22102.html"},"headline":"敏捷软件开发","image":["https://elwinliu.vercel.app/img/og_image.png"],"datePublished":"2022-05-03T07:30:00.000Z","dateModified":"2022-05-03T08:32:18.333Z","author":{"@type":"Person","name":"刘星雨"},"publisher":{"@type":"Organization","name":"Elwin's Blog","logo":{"@type":"ImageObject","url":"https://elwinliu.vercel.app/img/logo.svg"}},"description":"敏捷软件开发历史、价值观和方法"}</script><link rel="canonical" href="https://elwinliu.vercel.app/posts/22102.html"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Java中String的不可变性 - Elwin&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Elwin&#039;s Blog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Elwin&#039;s Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="从性能、安全两个角度阐述immutable object的优势"><meta property="og:type" content="blog"><meta property="og:title" content="Java中String的不可变性"><meta property="og:url" content="https://elwinliu.vercel.app/posts/50002.html"><meta property="og:site_name" content="Elwin&#039;s Blog"><meta property="og:description" content="从性能、安全两个角度阐述immutable object的优势"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://s2.loli.net/2022/05/29/kYbzw8NfcDGX4pQ.png"><meta property="og:image" content="d:/MYCODE/Blog/hexo/source/_posts/String%E7%9A%84%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%80%A7/image-20220529151450932.png"><meta property="article:published_time" content="2022-05-29T05:30:00.000Z"><meta property="article:modified_time" content="2022-05-29T07:30:34.426Z"><meta property="article:author" content="刘星雨"><meta property="article:tag" content="Java"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://s2.loli.net/2022/05/29/kYbzw8NfcDGX4pQ.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://elwinliu.vercel.app/posts/50002.html"},"headline":"Java中String的不可变性","image":["https://s2.loli.net/2022/05/29/kYbzw8NfcDGX4pQ.png","d:/MYCODE/Blog/hexo/source/_posts/String%E7%9A%84%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%80%A7/image-20220529151450932.png"],"datePublished":"2022-05-29T05:30:00.000Z","dateModified":"2022-05-29T07:30:34.426Z","author":{"@type":"Person","name":"刘星雨"},"publisher":{"@type":"Organization","name":"Elwin's Blog","logo":{"@type":"ImageObject","url":"https://elwinliu.vercel.app/img/logo.svg"}},"description":"从性能、安全两个角度阐述immutable object的优势"}</script><link rel="canonical" href="https://elwinliu.vercel.app/posts/50002.html"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
   (function () {
       function switchTab() {
           if (!location.hash) {
@@ -27,68 +27,32 @@
       switchTab();
       window.addEventListener('hashchange', switchTab, false);
   })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.1.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Elwin&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ElwinLiu"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><div class="level-left"></div><span class="level-item">Posted&nbsp;<time dateTime="2022-05-03T07:30:00.000Z" title="2022/5/3 15:30:00">2022-05-03</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-05-03T08:32:18.333Z" title="2022/5/3 16:32:18">2022-05-03</time></span><span class="level-item"><a class="link-muted" href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">软件工程</a></span><span class="level-item">6 minutes read (About 877 words)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>&nbsp;visits</span></div></div><h1 class="title is-3 is-size-4-mobile">敏捷软件开发</h1><div class="content"><h2 id="敏捷软件开发（Agile-software-development）出现的背景">敏捷软件开发（Agile software development）出现的背景<a class="anchor" href="#敏捷软件开发（Agile-software-development）出现的背景">·</a></h2>
-<p>  敏捷软件开发从1990年代开始逐渐引起广泛关注。2001年，敏捷方法的推崇者在美国犹他州雪鸟滑雪圣地进行了一次聚会，形成了「敏捷联盟」并发表了《敏捷宣言》，在这个宣言中，最重要的部分即以下几条：</p>
-<ul>
-<li>
-<p>个体和互动高于流程和工具。</p>
-<ul>
-<li>自我组织和动机备受重视，鼓励结对编程等开发方法。认为建立一个良好的协作和沟通环境的团队，要优于一个孤立运作的专家团队。</li>
-</ul>
-</li>
-<li>
-<p>工作的软件高于详尽的文档。</p>
-<ul>
-<li>直接向客户提交软件，要比提交详尽的文档更加直观，也更符合最终目的。</li>
-</ul>
-</li>
-<li>
-<p>客户合作高于合同谈判。</p>
-<ul>
-<li>与客户合作发现客户的需求，这种方式发现的需求更加可信和全面。</li>
-</ul>
-</li>
-<li>
-<p>响应变化高于遵循计划。</p>
-<ul>
-<li>敏捷开发欢迎随时发生的变化。</li>
-</ul>
-</li>
-</ul>
-<p>总而言之，人的沟通、自组织高于成文的规矩，软件高于文档。</p>
-<h2 id="宣言中提出的12条原则">宣言中提出的12条原则<a class="anchor" href="#宣言中提出的12条原则">·</a></h2>
-<ol>
-<li>尽早、持续交付有价值的软件以满足用户</li>
-<li>欢迎需求的变更，即使项目即将关闭</li>
-<li>尽可能多地提交软件（以周为单位，不以月为单位）</li>
-<li>和客户进行日常的、紧密的合作</li>
-<li>项目的成员需要是有激情的，值得信赖的</li>
-<li>面对面交流是最好的交流方式</li>
-<li>可以工作的软件，是衡量进度的主要标准</li>
-<li>保持开发的节奏</li>
-<li>对卓越技术和良好设计的不断追求</li>
-<li>简单——减少工作量的艺术——至关重要</li>
-<li>最好的架构、需求分析、设计属于自组织团队</li>
-<li>团队阶段性的总结如何提升效率，并相应地调整自己的行为</li>
-</ol>
-<h2 id="敏捷方法">敏捷方法<a class="anchor" href="#敏捷方法">·</a></h2>
-<p><em>这里暂时只讨论SCRUM（考试需求），以后有时间补上</em></p>
-<h3 id="SCRUM">SCRUM<a class="anchor" href="#SCRUM">·</a></h3>
-<h4 id="定义">定义<a class="anchor" href="#定义">·</a></h4>
-<p>Scrum是用于开发、交付和维持错综复杂产品 (complex products) 的敏捷框架 (framework)</p>
-<h4 id="特性">特性<a class="anchor" href="#特性">·</a></h4>
-<p>（先讲一个笑话</p>
-<figure class="highlight"><table><tr><td class="code"><pre><code class="hljs">一天，一头猪和一只鸡在路上散步。<br>鸡对猪说：“嗨，我们合伙开一家餐馆怎么样？”<br>猪回头看了一下鸡说：“好主意，那你准备给餐馆起什么名字呢？”<br>鸡想了想说：“叫‘火腿和鸡蛋’怎么样？”<br>“那可不行”，猪说：“我把自己全搭进去了，而你只是参与而已。”<br></code></pre></td></tr></table></figure>
-<p>从以上笑话中获得灵感，SCRUM中角色被分为两组，猪组和鸡组</p>
-<p>猪组包含以下角色:<br>
-  1. 敏捷教练：确保团队合理运作SCRUM<br>
-  2. 产品负责人：代表利益相关者<br>
-  3. 开发团队：一个跨职能小团队，团队拥有交付软件需要的各种技能</p>
-<p>鸡组包含以下角色：<br>
-  1. 用户：产品的最终意义<br>
-  2. 利益相关者：影响项目成功的人，但只直接参与冲刺评审过程<br>
-  3. 经理：为产品搭建环境的人</p>
-</div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">软件工程</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/posts/13960.html"><i class="level-item fas fa-chevron-left"></i><span class="level-item">斐波那契数列——DP和分治的相似与不同</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/posts/8569.html"><span class="level-item">2021年终总结</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div class="content" id="valine-thread"></div><script src="//cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@1.4.16/dist/Valine.min.js"></script><script>new Valine({
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.1.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Elwin&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ElwinLiu"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><div class="level-left"></div><span class="level-item">Posted&nbsp;<time dateTime="2022-05-29T05:30:00.000Z" title="2022/5/29 13:30:00">2022-05-29</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-05-29T07:30:34.426Z" title="2022/5/29 15:30:34">2022-05-29</time></span><span class="level-item"><a class="link-muted" href="/categories/Java/">Java</a></span><span class="level-item">5 minutes read (About 756 words)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>&nbsp;visits</span></div></div><h1 class="title is-3 is-size-4-mobile">Java中String的不可变性</h1><div class="content"><p>​		今天的剑指offer 05，替换空格题目，要求实现一个函数把字符串 <code>s</code> 中的每个空格替换成&quot;%20&quot;。按照c++的做法，可以直接创建String对象或者原地算法轻松解决。但是使用Java就需要注意String类型的不可变性。今天就研究了一下不可变性是什么、有什么用。（查阅资料的过程中，发现Java课上老师也讲过）</p>
+<h2 id="一、是什么？">一、是什么？<a class="anchor" href="#一、是什么？">·</a></h2>
+<p>​		查阅JDK源码，java.lang.String类的前三行如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">String</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">java</span>.io.Serializable, comparable&lt;String&gt;, CharSequence&#123;<br>	<span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-type">char</span> value&#123;&#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>​		我们知道，final修饰的类不可以被继承，修饰的方法不可以被重写，修饰的变量是基本数据类型不可以被修改，修饰的变量是引用类型则不可以再指向其他对象。因此，String的不可变性就体现在如下两个方面：</p>
+<pre><code>	1. String类由final修饰，不可被继承，从而避免子类改变。
+	1. String类中保存字符串的数组由final修饰且为私有。
+</code></pre>
+<h2 id="二、为什么需要不可变性？">二、为什么需要不可变性？<a class="anchor" href="#二、为什么需要不可变性？">·</a></h2>
+<blockquote>
+<p>I would use an immutable whenever I can.</p>
+<p>——James Gosling</p>
+</blockquote>
+<h3 id="1-字符串常量池">1. 字符串常量池<a class="anchor" href="#1-字符串常量池">·</a></h3>
+<p>​		日常开发过程中，字符串的使用是非常常见的，频繁创建字符串会消耗大量的时间和空间，从而影响程序的运行性能，因此需要一个字符串常量池将创造过的字符串缓存起来。</p>
+<p>​		字符串常量池是JVM用来存储字符串的一个特殊区域，由于字符串是不可变的，JVM只需要在字符串常量池中为每一个字符串存储一个副本，以后需要用到该副本时，直接将句柄指向该副本。</p>
+<p><img src="https://s2.loli.net/2022/05/29/kYbzw8NfcDGX4pQ.png" alt="preview"></p>
+<h3 id="2-数据安全">2. 数据安全<a class="anchor" href="#2-数据安全">·</a></h3>
+<p>​		子字符串在java中的应用无处不在，当涉及到一些机密信息时，字符串的不可变性就显得非常重要，如下图用户在修改密码时发生的情况：</p>
+<p>​		<img src="D:/MYCODE/Blog/hexo/source/_posts/String%E7%9A%84%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%80%A7/image-20220529151450932.png" alt="image-20220529151450932" style="zoom:50%;" /></p>
+<p>​		用户将String类型的password传入数据库相关的api中，在传入接口后，操作发生前的期间，外部对password的修改可能造成安全问题，比如password对象在接口外部被修改导致存入错误信息。</p>
+<h3 id="3-线程安全">3. 线程安全<a class="anchor" href="#3-线程安全">·</a></h3>
+<p>​		多线程之间共享的过程中，如果线程a将字符串修改，本质上是创建了另外一个字符串对象，原来的字符串对象在线程b中并未发生任何变化。</p>
+<h3 id="4-哈希码">4. 哈希码<a class="anchor" href="#4-哈希码">·</a></h3>
+<p>​		hashmap中的键往往都是String类对象，因为字符串不可变，所以在创建时字符串的hashcode就被缓存，不需要重新计算。</p>
+</div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Java/">Java</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/posts/13960.html"><span class="level-item">斐波那契数列——DP和分治的相似与不同</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div class="content" id="valine-thread"></div><script src="//cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@1.4.16/dist/Valine.min.js"></script><script>new Valine({
             el: '#valine-thread',
             appId: "joekLDqNYx42fUwsjmzWEOpp-gzGzoHsz",
             appKey: "bERjJCPWOn4rA33GaaHhNRhb",
